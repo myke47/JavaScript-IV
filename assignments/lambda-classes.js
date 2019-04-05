@@ -49,14 +49,37 @@ class Student extends Person  {
     }
 }
 
+class ProjectManager extends Instructor  {
+    constructor(pmProp)  {
+        super(pmProp);
+        this.gradClassName = pmProp.gradClassName;
+        this.favInstructor = pmProp.favInstructor;
+        this.channel = pmProp.channel;
+        this.pmName = pmProp.pmName;
+        this.stuName = pmProp.stuName;
+        this.dbSubject = pmProp.dbSubject;
+    }
+    standUp(){
+        return `${this.pmName} announces to ${'@' + this.channel} standy times!`;
+    }
+    debugsCode(){
+        return `${this.pmName} debugs ${this.stuName}'s code on ${this.dbSubject}.`;
+    }
+}
 
+const person = new Person({
 
+}) 
 
-
-
-
-
-
+const alex = new ProjectManager({
+    pmName: 'Alex',
+    role: 'Project Manager',
+    channel: 'webpt5_Alex',
+    gradClassName: 'CS1',
+    favInstructor: 'Cam Pope',
+    stuName: 'Manny',
+    dbSubject: 'React'
+}) 
 
 const manny = new Student({
     name: 'Manny',
@@ -64,7 +87,7 @@ const manny = new Student({
     favSubjects: ['HTML', 'CSS', 'JS Classes'],
     previousBackground: 'Inbound Marketing',
     className: 'WEBPT5',
-    prSubject: 'JS Classes'
+    prSubject: 'JS Classes',
 });
 
 const fred = new Instructor({
@@ -90,6 +113,11 @@ console.log(fred.demo());
 console.log(manny.listsSubjects());
 console.log(manny.PRAssignment());
 console.log(manny.sprintChallenge());
+console.log(alex.role);
+console.log(alex.gradClassName);
+console.log(alex.channel);
+console.log(alex.debugsCode());
+console.log(alex.standUp());
 // console.log(fred.grade());
 
 // ## `lambda-classes` - We need a roster of Lambda School personnel. Build it!
